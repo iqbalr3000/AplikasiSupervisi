@@ -47,7 +47,7 @@
 
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
-                        <a class="nav-link active" href="index.php">Download</a>
+                        <a class="nav-link" href="index.php">Download</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="indexSupervisor.php">Supervisor</a>
@@ -56,20 +56,42 @@
                         <a class="nav-link" href="indexJadwal.php">Jadwal</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="indexRPM.php">RPM</a>
+                        <a class="nav-link active" href="indexRPM.php">RPM</a>
                     </li>
                 </ul>
                 <br><br>
 
-                <!-- ini bagian button input  -->
-                <h2 align='center'>Laporan Kegiatan Supervisi</h3>
-                <br>
-                <form align='center' action="report.php">
-                    <button type="submit" class="btn btn-primary">Download laporan </button>
-                </form> 
+                <div class="card" style="width: 70rem;">
+                    <div class="card-body">
+                        <!-- ini bagian tabel guru  -->
+                        <h4 align='center'>Daftar RPM</h4>
+                        <br>
+                        <div class="form-group">
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th>No</th>
+                                    <th>Name File</th>
+                                    <th width="150px">Pengunggah</th>
+                                    <th width="100px">Status</th>
+                                </tr>
 
-                <br><br>
-
+                                <?php 
+                                    include "../../config/index.php";
+                                    $query_mysql = mysqli_query($koneksi, "SELECT * FROM upload");
+                                    $nomor = 1;
+                                    while($data = mysqli_fetch_array($query_mysql)){
+                                ?>
+                                    <tr>
+                                    <td><?php echo $nomor++; ?></td>
+                                    <td><?php echo $data['nama_file']; ?></td>
+                                    <td><?php echo $data['pengunggah']; ?></td>                        
+                                    <td><?php echo $data['status']; ?></td>
+                                </tr>
+                                <?php } ?>
+                            </table>
+                        </div>
+                    </div>
+                </div>
                  
             </div>
 

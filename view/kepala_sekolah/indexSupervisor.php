@@ -47,10 +47,10 @@
 
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
-                        <a class="nav-link active" href="index.php">Download</a>
+                        <a class="nav-link" href="index.php">Download</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="indexSupervisor.php">Supervisor</a>
+                        <a class="nav-link active" href="indexSupervisor.php">Supervisor</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="indexJadwal.php">Jadwal</a>
@@ -61,15 +61,39 @@
                 </ul>
                 <br><br>
 
-                <!-- ini bagian button input  -->
-                <h2 align='center'>Laporan Kegiatan Supervisi</h3>
-                <br>
-                <form align='center' action="report.php">
-                    <button type="submit" class="btn btn-primary">Download laporan </button>
-                </form> 
+                <div class="card" style="width: 70rem;">
+                    <div class="card-body">
+                        <!-- ini bagian tabel  -->
+                        <h4 align='center'>Daftar Supervisi</h4>
+                        <br>
+                        <!-- ini bagian tabel  -->
+                        <div class="form-group">
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th>No</th>
+                                    <th>Name</th>
+                                    <th>NIP</th>
+                                    <th>Alamat</th>
+                                </tr>
 
-                <br><br>
+                                <?php 
+                                    include "../../config/index.php";
+                                    $query_mysql = mysqli_query($koneksi, "SELECT * FROM supervisi");
+                                    $nomor = 1;
+                                    while($data = mysqli_fetch_array($query_mysql)){
 
+                                ?>
+                                    <tr>
+                                    <td><?php echo $nomor++; ?></td>
+                                    <td><?php echo $data['nama']; ?></td>
+                                    <td><?php echo $data['nip']; ?></td>
+                                    <td><?php echo $data['alamat']; ?></td>
+                                </tr>
+                                <?php } ?>
+                            </table>
+                        </div>
+                    </div>
+                </div>
                  
             </div>
 

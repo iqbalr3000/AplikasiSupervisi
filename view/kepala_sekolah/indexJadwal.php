@@ -47,13 +47,13 @@
 
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
-                        <a class="nav-link active" href="index.php">Download</a>
+                        <a class="nav-link" href="index.php">Download</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="indexSupervisor.php">Supervisor</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="indexJadwal.php">Jadwal</a>
+                        <a class="nav-link active" href="indexJadwal.php">Jadwal</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="indexRPM.php">RPM</a>
@@ -61,15 +61,41 @@
                 </ul>
                 <br><br>
 
-                <!-- ini bagian button input  -->
-                <h2 align='center'>Laporan Kegiatan Supervisi</h3>
-                <br>
-                <form align='center' action="report.php">
-                    <button type="submit" class="btn btn-primary">Download laporan </button>
-                </form> 
-
-                <br><br>
-
+                <div class="card" style="width: 70rem;">
+                    <div class="card-body">
+                        <!-- ini bagian tabel jadwal  -->
+                        <h4 align='center'>Jadwal Supervisi</h4>
+                        <br>
+                        <div class="form-group">
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th>Senin</th>
+                                    <th>Selasa</th>
+                                    <th>Rabu</th>
+                                    <th>Kamis</th>
+                                    <th>Jum'at</th>
+                                    <th>Sabtu</th>
+                                    <th>Minggu</th>
+                                </tr>
+                                <?php 
+                                    include "../../config/index.php";
+                                    $query_mysql = mysqli_query($koneksi, "SELECT * FROM jadwal");
+                                    while($data = mysqli_fetch_array($query_mysql)){
+                                ?>
+                                <tr>
+                                    <td><?php echo $data['senin']; ?></td>
+                                    <td><?php echo $data['selasa']; ?></td>
+                                    <td><?php echo $data['rabu']; ?></td>
+                                    <td><?php echo $data['kamis']; ?></td>
+                                    <td><?php echo $data['jumat']; ?></td>
+                                    <td><?php echo $data['sabtu']; ?></td>
+                                    <td><?php echo $data['minggu']; ?></td>
+                                </tr>
+                                <?php } ?>
+                            </table>
+                        </div>
+                    </div>
+                </div>
                  
             </div>
 

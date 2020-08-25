@@ -57,62 +57,51 @@
 
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
-                        <a class="nav-link active" href="index.php">Supervisor</a>
+                        <a class="nav-link" href="index.php">Supervisor</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="indexJadwal.php">Jadwal</a>
+                        <a class="nav-link active" href="indexJadwal.php">Jadwal</a>
                     </li>
                 </ul>
                 <br><br>
 
                 <div class="card" style="width: 70rem;">
                     <div class="card-body">
-                    <h4 align='center'>Daftar Supervisi</h4>
+                        <!-- ini bagian tabel jadwal  -->
+                        <h4 align='center'>Jadwal Supervisi</h4>
                         <br>
-                        <!-- ini bagian button input  -->
-                        <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modalInput">Input supervisor</a>
+                        <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modalJadwal">+</a>
                         <br><br>
-                        <!-- ini bagian tabel  -->
                         <div class="form-group">
                             <table class="table table-bordered">
                                 <tr>
-                                    <th>No</th>
-                                    <th>Name</th>
-                                    <th>NIP</th>
-                                    <th>Alamat</th>
-                                    <th width="170px">Action</th>
+                                    <th>Senin</th>
+                                    <th>Selasa</th>
+                                    <th>Rabu</th>
+                                    <th>Kamis</th>
+                                    <th>Jum'at</th>
+                                    <th>Sabtu</th>
+                                    <th>Minggu</th>
                                 </tr>
-
                                 <?php 
                                     include "../../config/index.php";
-                                    $query_mysql = mysqli_query($koneksi, "SELECT * FROM supervisi");
-                                    $nomor = 1;
+                                    $query_mysql = mysqli_query($koneksi, "SELECT * FROM jadwal");
                                     while($data = mysqli_fetch_array($query_mysql)){
-            
                                 ?>
-                                    <tr>
-                                    <td><?php echo $nomor++ ?></td>
-                                    <td><?php echo $data['nama']; ?></td>
-                                    <td><?php echo $data['nip']; ?></td>
-                                    <td><?php echo $data['alamat']; ?></td>
-                                    <td>
-                                        <a class="btn btn-secondary" href="#" type="button" data-toggle="modal" data-target="#modalEdit<?php echo $data['id']; ?>">Edit</a>
-                                        <a class="btn btn-danger" href="delete.php?id=<?php echo $data['id']; ?>">Hapus</a>
-                                    </td>
+                                <tr>
+                                    <td><?php echo $data['senin']; ?></td>
+                                    <td><?php echo $data['selasa']; ?></td>
+                                    <td><?php echo $data['rabu']; ?></td>
+                                    <td><?php echo $data['kamis']; ?></td>
+                                    <td><?php echo $data['jumat']; ?></td>
+                                    <td><?php echo $data['sabtu']; ?></td>
+                                    <td><?php echo $data['minggu']; ?></td>
                                 </tr>
-
-                                <?php
-                                    include 'modal_Input.php';
-                                    include 'modal_Jadwal.php';
-                                    include 'modal_Edit.php';
-                                ?>
-
                                 <?php } ?>
                             </table>
                         </div>
                     </div>
                 </div>
-               
                 
             </div>
             
