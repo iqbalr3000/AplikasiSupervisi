@@ -97,6 +97,11 @@
                                     <td><?php echo $data['sabtu']; ?></td>
                                     <td><?php echo $data['minggu']; ?></td>
                                 </tr>
+
+                                <?php
+                                    include 'modal_Jadwal.php';
+                                ?>
+
                                 <?php } ?>
                             </table>
                         </div>

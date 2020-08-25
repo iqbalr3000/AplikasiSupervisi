@@ -103,7 +103,6 @@
 
                                 <?php
                                     include 'modal_Input.php';
-                                    include 'modal_Jadwal.php';
                                     include 'modal_Edit.php';
                                 ?>
 
